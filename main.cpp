@@ -26,7 +26,7 @@ int kiemtra(char x);
 void createStack(Stack &S);
 void xuly(char A[],char B[]);
 int thutuUuTien(char x);
-void xet(char B[],Stack ToanTu,char C[]);
+void dangHauTo(char B[],Stack ToanTu,char C[]);
 void TinhToan(char x[],char y[],char z);
 int kt(char x[]);
 void xoachuoi(char x[]);
@@ -45,27 +45,32 @@ void main()
 	createStack(ToanTu);
 	printf("Nhap vao ki tu a neu muon dung!!\n");
 	printf("Cac toan tu ban co the su dung +,-,*,/,^,%,(,) va kieu so thuc.\n");
+	printf("luu y so thuc ko the dung %\n");
 	do
 	{
 		printf("Nhap bieu thuc can tinh:");
 		gets(A);
-		if((A[0]!='a'||A[0]!=NULL||A[0]!='\0')&&A[1]!='\0')
+		if(A[0]!='a'&&A[1]!='\0')
 		{
-			xuly(A,B);
-			printf("Bieu thuc vua nhap:");
-			int n=strlen(B);
-			for(int j=0;j<n;j++)
-			printf("%c",B[j]);
-			printf("\n");
-			xet(B,ToanTu,C);
-			chuanhoa(C);
-			puts(C);
-			ketqua(C,x);
-			strrev(x);
-			xuatkq(x);
+			if(A[0]!=NULL)
+			{
+				xuly(A,B);
+				printf("Bieu thuc vua nhap:");
+				int n=strlen(B);
+				for(int j=0;j<n;j++)
+				printf("%c",B[j]);
+				printf("\n");
+				dangHauTo(B,ToanTu,C);
+				chuanhoa(C);
+				printf("Dang hau to cua bieu thuc vua nhap: ");
+				puts(C);
+				ketqua(C,x);
+				strrev(x);
+				xuatkq(x);
+			}
 		}
 	}
-	while((A[0]!='a'||A[0]!=NULL||A[0]!='\0')&&A[1]!='\0');
+	while(A[0]!='a'&&A[1]!='\0');
     
     //return 0;
 }
@@ -316,7 +321,7 @@ void xoaVTchuoi(char x[],int k)
 	l--;
 }
 
-void xet(char B[],Stack ToanTu,char C[])
+void dangHauTo(char B[],Stack ToanTu,char C[])
 {
 	int l=strlen(B);
 	int i=0,k=0;
